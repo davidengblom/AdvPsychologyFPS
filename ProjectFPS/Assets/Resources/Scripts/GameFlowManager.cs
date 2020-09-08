@@ -66,7 +66,7 @@ public class GameFlowManager : MonoBehaviour
         else
         {
             if (m_ObjectiveManager.AreAllObjectivesCompleted())
-                EndGame(true);
+                EndGame(true); //Debug.Log("Your Time: " + (Time.time - timer.timer));
 
             // Test if player died
             if (m_Player.isDead)
@@ -80,12 +80,13 @@ public class GameFlowManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        Debug.Log("Your Time: " + (Time.time - timer.timer));
+        timer.timer = Time.time - timer.timer;
         // Remember that we need to load the appropriate end scene after a delay
         gameIsEnding = true;
         endGameFadeCanvasGroup.gameObject.SetActive(true);
         if (win)
         {
-            Debug.Log("Your Time: " + (Time.time - timer.timer));
             m_SceneToLoad = winSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
 

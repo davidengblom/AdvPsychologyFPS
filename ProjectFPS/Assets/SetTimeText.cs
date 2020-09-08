@@ -1,16 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class SetTimeText : MonoBehaviour
 {
     public GetTimer gameTimer;
-    public TMP_Text text;
+    public Text text;
 
-
-    private void Start()
-    {
-        text.text = gameTimer.timer.ToString();
-    }
+    private void Update() => text.text = gameTimer.timer.ToString();
 }
