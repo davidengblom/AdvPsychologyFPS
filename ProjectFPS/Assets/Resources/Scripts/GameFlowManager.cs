@@ -34,6 +34,8 @@ public class GameFlowManager : MonoBehaviour
     float m_TimeLoadEndGameScene;
     string m_SceneToLoad;
 
+    public GetTimer timer;
+
     void Start()
     {
         m_Player = FindObjectOfType<PlayerCharacterController>();
@@ -83,6 +85,7 @@ public class GameFlowManager : MonoBehaviour
         endGameFadeCanvasGroup.gameObject.SetActive(true);
         if (win)
         {
+            Debug.Log("Your Time: " + (Time.time - timer.timer));
             m_SceneToLoad = winSceneName;
             m_TimeLoadEndGameScene = Time.time + endSceneLoadDelay + delayBeforeFadeToBlack;
 
